@@ -79,6 +79,32 @@ ul li {
     border-bottom: 1px solid #eee;
 }
 
+.rules-container {
+    background: #f9f9f9;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  
+  .rules-container h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    color: #333;
+  }
+  
+  .rules-list {
+    list-style-type: disc;
+    padding-left: 1.2rem;
+    font-size: 0.95rem;
+    color: #444;
+  }
+  
+  .rules-list li {
+    margin-bottom: 0.5rem;
+  }
+  
+
 
 /* 🎯 Mobile Responsive Tweaks */
 @media screen and (max-width: 768px) {
