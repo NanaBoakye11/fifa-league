@@ -14,20 +14,6 @@
         <header>
             <h1>🏆 FIFA League Dashboard</h1>
         </header>
-    <section class="rules-container">
-        <h2>🎮 League Rules</h2>
-        <ul class="rules-list">
-            <li><strong>Each player</strong> plays everyone <strong>twice</strong> (home & away)</li>
-            <li><strong>Submit your own scores</strong> after each match</li>
-            <li><strong>Top 4</strong> players enter playoffs</li>
-            <li>Points: Win = 3, Draw = 1, Loss = 0</li>
-            <li>Tiebreakers: Goal Difference → Goals For → Head-to-Head</li>
-            <li>Playoffs are <strong>single matches</strong></li>
-            <li>If tied: Golden Goal or Penalties (decide pre-match)</li>
-            <li><strong>No rage quits</strong>, pausing abuse, or cheating</li>
-            <li>Only admins can reset the league</li>
-        </ul>
-        </section>
           
         <section class="score-submission">
             <h2>Submit Score</h2>
@@ -95,7 +81,21 @@
                 </ul>
             </div>
         </section>
-        
+
+        <section class="rules-container">
+            <h2>🎮 League Rules</h2>
+            <ul class="rules-list">
+                <li><strong>Each player</strong> plays everyone <strong>twice</strong> (home & away)</li>
+                <li><strong>Submit your own scores</strong> after each match</li>
+                <li><strong>Top 4</strong> players enter playoffs</li>
+                <li>Points: Win = 3, Draw = 1, Loss = 0</li>
+                <li>Tiebreakers: Goal Difference → Goals For → Head-to-Head</li>
+                <li>Playoffs are <strong>single matches</strong></li>
+                <li>If tied: Report Draw (Only Playoffs allowed Extra Time)</li>
+                <li><strong>No rage quits</strong>, pausing abuse, or cheating</li>
+            </ul>
+        </section>
+    
 
         <section style="text-align: center; margin-top: 40px;">
             {% if matches|length == 0 %}
