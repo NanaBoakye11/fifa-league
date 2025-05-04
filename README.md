@@ -28,32 +28,27 @@ This is a lightweight web app for managing a FIFA head-to-head league among frie
    git clone https://github.com/your-username/fifa-league-app.git
    cd fifa-league-app
 
+
 2. **Create a virtual environment
-  ```bash
   python3 -m venv venv
   source venv/bin/activate
 
 3. Install dependencies
-```bash
 pip install -r requirements.txt
    
 4. Apply migrations
-```bash
 python manage.py migrate
    
 5. Import players (from Google Form CSV)
-```bash
 python manage.py import_players players_form.csv
 
 6. Generate fixtures
-```bash
 python manage.py shell
 >>> from core.utils import generate_fixtures
 >>> generate_fixtures()
 >>> exit()
     
 7. Run the app
-```bash
 python manage.py runserver
 
 8. Open http://127.0.0.1:8000
@@ -63,7 +58,7 @@ Hosted on Heroku:
 https://fifa-league-app-d8649c766f0d.herokuapp.com/
 
 ### 📂 Project Structure
-```text
+
 fifa_league/
 ├── core/
 │   ├── models.py
