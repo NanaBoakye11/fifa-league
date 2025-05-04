@@ -5,11 +5,7 @@ from .utils import generate_fixtures
 from django.db.models import F
 from django.urls import reverse
 from django.contrib import messages
-
-
 from django.db.models import Q, Count
-
-
 # Create your views here.
 from django.http import JsonResponse
 
@@ -196,76 +192,9 @@ def reset_tournament_view(request):
 
 
 
-# def landing_page_view(request):
-#     # Score submission logic
-#     if request.method == 'POST':
-#         match_id = request.POST.get('match_id')
-#         home_score = request.POST.get('home_score')
-#         away_score = request.POST.get('away_score')
 
-#         if match_id and home_score is not None and away_score is not None:
-#             match = Match.objects.get(id=match_id)
-#             match.home_score = int(home_score)
-#             match.away_score = int(away_score)
-#             match.is_played = True
-#             match.save()
-
-#     # Unplayed matches
-#     unplayed_matches = Match.objects.filter(is_played=False).order_by('id')
-#     played_matches = Match.objects.filter(is_played=True).order_by('-id')[:10]
-
-#     # League table
-#     players = Player.objects.all()
-#     table = []
-
-#     for player in players:
-#         matches = Match.objects.filter(Q(home_player=player) | Q(away_player=player), is_played=True)
-#         wins = draws = losses = gf = ga = 0
-
-#         for m in matches:
-#             if m.home_player == player:
-#                 gfor, gainst = m.home_score, m.away_score
-#             else:
-#                 gfor, gainst = m.away_score, m.home_score
-
-#             gf += gfor
-#             ga += gainst
-
-#             if gfor > gainst:
-#                 wins += 1
-#             elif gfor == gainst:
-#                 draws += 1
-#             else:
-#                 losses += 1
-
-#         points = wins * 3 + draws
-#         gd = gf - ga
-#         remaining = Match.objects.filter(Q(home_player=player) | Q(away_player=player), is_played=False).count()
-
-#         table.append({
-#             'name': player.name,
-#             'gp': matches.count(),
-#             'w': wins,
-#             'd': draws,
-#             'l': losses,
-#             'gf': gf,
-#             'ga': ga,
-#             'gd': gd,
-#             'pts': points,
-#             'rem': remaining
-#         })
-
-#     table.sort(key=lambda x: (x['pts'], x['gd'], x['gf']), reverse=True)
-
-#     return render(request, 'landing.html', {
-#         'matches': unplayed_matches,
-#         'results': played_matches,
-#         'table': table
-#     })
-
-
-def index(request):
-    return JsonResponse({"message": "FIFA League backend is running."})
+# def index(request):
+#     return JsonResponse({"message": "FIFA League backend is running."})
 
 
 def signup_view(request):
