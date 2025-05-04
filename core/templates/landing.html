@@ -1,0 +1,210 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <title>FIFA League Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏆 FIFA League Dashboard</h1>
+        </header>
+
+        <section class="score-submission">
+            <h2>Submit Score</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="match">Select Match:</label>
+                    <select name="match_id" required>
+                        {% for match in matches %}
+                            <option value="{{ match.id }}">{{ match.home_player }} vs {{ match.away_player }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="home_score" placeholder="Home Score" required>
+                    <input type="number" name="away_score" placeholder="Away Score" required>
+                </div>
+                <button type="submit">Submit Score</button>
+            </form>
+        </section>
+
+        <section class="league-table">
+            <h2>League Standings</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Player</th><th>GP</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th><th>Remaining</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in table %}
+                    <tr>
+                        <td>{{ row.name }}</td>
+                        <td>{{ row.gp }}</td>
+                        <td>{{ row.w }}</td>
+                        <td>{{ row.d }}</td>
+                        <td>{{ row.l }}</td>
+                        <td>{{ row.gf }}</td>
+                        <td>{{ row.ga }}</td>
+                        <td>{{ row.gd }}</td>
+                        <td>{{ row.pts }}</td>
+                        <td>{{ row.rem }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <section class="fixtures">
+            <h2>Upcoming Fixtures</h2>
+            <ul>
+                {% for match in matches %}
+                    <li>{{ match.home_player }} vs {{ match.away_player }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section class="results">
+            <h2>Recent Results</h2>
+            <div style="max-height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
+                <ul>
+                    {% for match in results %}
+                        <li>{{ match.home_player }} {{ match.home_score }} - {{ match.away_score }} {{ match.away_player }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+        
+
+        <section style="text-align: center; margin-top: 40px;">
+            {% if matches|length == 0 %}
+                <a href="{% url 'playoffs' %}">
+                    <button style="padding: 15px 30px; background-color: #28a745; color: white; font-size: 16px; border: none; border-radius: 8px;">
+                        🚀 View Playoffs
+                    </button>
+                </a>
+            {% else %}
+                <p><strong>{{ matches|length }}</strong> match{{ matches|length|pluralize }} remaining before playoffs unlock.</p>
+                <button disabled style="padding: 15px 30px; background-color: #ccc; color: #444; font-size: 16px; border: none; border-radius: 8px;">
+                    ⏳ Playoffs Locked
+                </button>
+            {% endif %}
+        </section>
+        </section>
+    </div>
+</body>
+</html>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>FIFA League Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 40px;
+            background: #27548A;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+        }
+        section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        select, input[type="number"], button {
+            padding: 8px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🏆 FIFA League Dashboard</h1>
+
+<section>
+    <h2>Submit Score</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Select Match:</label>
+        <select name="match_id" required>
+            {% for match in matches %}
+                <option value="{{ match.id }}">
+                    {{ match.home_player }} vs {{ match.away_player }}
+                </option>
+            {% endfor %}
+        </select><br><br>
+
+        <input type="number" name="home_score" placeholder="Home Score" required>
+        <input type="number" name="away_score" placeholder="Away Score" required>
+        <button type="submit">Submit Score</button>
+    </form>
+</section>
+
+<section>
+    <h2>League Table</h2>
+    <table>
+        <tr>
+            <th>Player</th><th>GP</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th><th>Remaining</th>
+        </tr>
+        {% for row in table %}
+        <tr>
+            <td>{{ row.name }}</td>
+            <td>{{ row.gp }}</td>
+            <td>{{ row.w }}</td>
+            <td>{{ row.d }}</td>
+            <td>{{ row.l }}</td>
+            <td>{{ row.gf }}</td>
+            <td>{{ row.ga }}</td>
+            <td>{{ row.gd }}</td>
+            <td>{{ row.pts }}</td>
+            <td>{{ row.rem }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+
+<section>
+    <h2>Upcoming Fixtures</h2>
+    <ul>
+        {% for match in matches %}
+            <li>{{ match.home_player }} vs {{ match.away_player }}</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section>
+    <h2>Recent Results</h2>
+    <ul>
+        {% for match in results %}
+            <li>{{ match.home_player }} {{ match.home_score }} - {{ match.away_score }} {{ match.away_player }}</li>
+        {% endfor %}
+    </ul>
+</section>
+
+</body>
+</html> -->

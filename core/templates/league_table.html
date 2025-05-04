@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>League Table</title>
+</head>
+<body>
+    <h1>League Standings</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Player</th>
+                <th>GP</th>
+                <th>W</th>
+                <th>D</th>
+                <th>L</th>
+                <th>GF</th>
+                <th>GA</th>
+                <th>GD</th>
+                <th>Pts</th>
+                <th>Remaining</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in table %}
+            <tr>
+                <td>{{ p.name }}</td>
+                <td>{{ p.games_played }}</td>
+                <td>{{ p.wins }}</td>
+                <td>{{ p.draws }}</td>
+                <td>{{ p.losses }}</td>
+                <td>{{ p.goals_for }}</td>
+                <td>{{ p.goals_against }}</td>
+                <td>{{ p.goal_diff }}</td>
+                <td>{{ p.points }}</td>
+                <td>{{ p.remaining }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

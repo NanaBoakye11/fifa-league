@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Tournament</title>
+</head>
+<body style="font-family: sans-serif; padding: 40px; text-align: center;">
+    <h1>🛑 Reset Tournament</h1>
+    <p>This will delete all matches and regenerate the fixtures from scratch.</p>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" style="padding: 15px 30px; font-size: 16px; background-color: red; color: white; border: none; border-radius: 8px;">
+            🔄 Confirm Reset
+        </button>
+    </form>
+    <br>
+    <a href="{% url 'landing' %}">← Go Back</a>
+</body>
+</html>

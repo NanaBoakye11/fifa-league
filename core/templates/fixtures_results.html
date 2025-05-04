@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fixtures & Results</title>
+</head>
+<body>
+    <h1>Upcoming Fixtures</h1>
+    {% if upcoming %}
+        <ul>
+        {% for match in upcoming %}
+            <li>{{ match.home_player }} vs {{ match.away_player }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No unplayed fixtures left.</p>
+    {% endif %}
+
+    <h1>Completed Results</h1>
+    {% if completed %}
+        <ul>
+        {% for match in completed %}
+            <li>{{ match.home_player }} {{ match.home_score }} - {{ match.away_score }} {{ match.away_player }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No games played yet.</p>
+    {% endif %}
+</body>
+</html>
