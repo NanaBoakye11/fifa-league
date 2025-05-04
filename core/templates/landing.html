@@ -62,14 +62,28 @@
             </table>
         </section>
 
-        <section class="fixtures">
+        <section class="fixtures-container">
+            <h2>📅 Upcoming Fixtures</h2>
+            <div class="scroll-wrapper">
+              {% for match in matches %}
+                <div class="fixture-card">
+                  <p><strong>{{ match.home_player.name }}</strong> vs <strong>{{ match.away_player.name }}</strong></p>
+                </div>
+              {% empty %}
+                <p>No upcoming fixtures.</p>
+              {% endfor %}
+            </div>
+          </section>
+          
+
+        <!-- <section class="fixtures">
             <h2>Upcoming Fixtures</h2>
             <ul>
                 {% for match in matches %}
                     <li>{{ match.home_player }} vs {{ match.away_player }}</li>
                 {% endfor %}
             </ul>
-        </section>
+        </section> -->
 
         <section class="results">
             <h2>Recent Results</h2>
