@@ -58,21 +58,21 @@ Hosted on Heroku:
 https://fifa-league-app-d8649c766f0d.herokuapp.com/
 
 ### 📂 Project Structure
-
-fifa_league/
-├── core/
-│   ├── models.py
-│   ├── views.py
-│   ├── urls.py
-│   └── templates/
-│       └── landing.html
-├── static/
-│   └── css/
-│       └── styles.css
-├── manage.py
-├── requirements.txt
-├── Procfile
-└── runtime.txt
+``text
+  fifa_league/
+  ├── core/
+  │   ├── models.py
+  │   ├── views.py
+  │   ├── urls.py
+  │   └── templates/
+  │       └── landing.html
+  ├── static/
+  │   └── css/
+  │       └── styles.css
+  ├── manage.py
+  ├── requirements.txt
+  ├── Procfile
+  └── runtime.txt
 
 ### 🛠 Built With
 -Django
