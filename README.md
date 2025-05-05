@@ -25,7 +25,7 @@ This is a lightweight web app for managing a FIFA head-to-head league among frie
 
 1. **Clone the repo**  
    ```bash
-   git clone https://github.com/your-username/fifa-league-app.git
+   git clone https://github.com/NanaBoakye11/fifa-league.git
    cd fifa-league-app
    ```
    
